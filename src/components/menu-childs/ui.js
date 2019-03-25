@@ -3,29 +3,48 @@ import Button from './ui-childs/button'
 import NestedList from './ui-childs/li'
 
 class Ui extends Component {
-  constructor() {
-    super()
+  constructor(props) {
+    super(props);
     this.state = {
       isHidden: true
-    }
+    };
 
     this.buttonClick = this.buttonClick.bind(this);
   }
 
-  buttonClick() {
-    this.setState({
-      isHidden: !this.state.isHidden
-    })
+  buttonClick(e) {
+    console.log('ui');
+    console.dir(e);
   }
   render() {
 
     return (
       <div className="ui">
-        <Button caption = {<p>&#9660;{" add entity"}</p>} />
-        <Button caption = {"( X ) delete entity"}/>
-        <Button caption = {<p>&#9668;{" save scene"}</p>} />
-        <Button caption = {"( X . . . X ) delete all"}/>
-        <Button caption = {<p>&#9658;{" load scene"}</p>} />
+        <Button
+          actionName = 'add'
+          caption = {<p>&#9660;{" add entity"}</p>}
+          buttonClick={this.buttonClick}
+        />
+        <Button
+          actionName = 'del'
+          caption = {<p>{"( X ) delete entity"}</p>}
+                buttonClick={this.buttonClick}
+        />
+        <Button
+          actionName = 'save'
+          caption = {<p>&#9668;{" save scene"}</p>}
+                buttonClick={this.buttonClick}
+        />
+        <Button
+          actionName = 'delAll'
+          caption = {<p>{"( X . . . X ) delete all"}</p>}
+                buttonClick={this.buttonClick}
+        />
+        <Button
+          actionName = 'load'
+          caption = {<p>&#9658;{" load scene"}</p>}
+                buttonClick={this.buttonClick}
+        />
         <NestedList/>
       </div>
 

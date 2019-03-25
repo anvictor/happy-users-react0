@@ -1,8 +1,6 @@
 import React, {Component} from 'react'
 import {
   AwesomeButton,
-  AwesomeButtonProgress,
-  AwesomeButtonSocial,
 } from 'react-awesome-button';
 import 'react-awesome-button/dist/themes/theme-blue.css';
 
@@ -15,6 +13,7 @@ function Button (props){
         <AwesomeButton
           size="large"
           type="primary"
+          action={(element,next)=>props.buttonClick(props.actionName)}
         >
           {props.caption}
         </AwesomeButton>

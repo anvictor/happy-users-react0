@@ -34,12 +34,6 @@ class OutlinedTextFields extends React.Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // handleChange = name => event => {
-  //   this.setState({
-  //     [name]: event.target.value,
-  //   });
-  //   console.log(this.state)
-  // };
   handleChange (e){
     this.setState({
           [e.target.name]: e.target.value,
