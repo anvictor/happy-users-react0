@@ -25,9 +25,7 @@ const styles = theme => ({
 });
 
 class ClickAway extends React.Component {
-  state = {
-    open: false,
-  };
+  state = { open: false, };
 
   handleClick = () => {
     this.setState(state => ({
