@@ -1,11 +1,13 @@
 import {OPEN_MENU} from '../constants/action-types';
-const initialMenuState = {
-  open: false
-};
+
+const initialMenuState = {open: false};
+
 function openMenuReducer(state = initialMenuState, action) {
+  const localState = {};
+  Object.assign(localState,  state);
   if (action.type === OPEN_MENU){
-    state.open = !state.open;
+    localState.open = !localState.open;
   }
-  return state;
+  return localState;
 };
 export default openMenuReducer;
