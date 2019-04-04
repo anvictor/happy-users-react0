@@ -1,23 +1,18 @@
-import React, {Component} from "react";
+import React from "react";
 import { connect } from "react-redux";
-import Form from "./Form";
+import StoreOpenMenuButtonForm from "./menu-childs/storeOpenMenuButtonForm";
 import Paper from "@material-ui/core/Paper/Paper";
 import Ui from "./menu-childs/ui";
 import PropTypes from 'prop-types';
 
 const mapStateToProps = state => {
-  return { open: state.open };
+  return { openUi: state.OpenMenuReducers.open };
 };
 
-
-
-
-const ConnectedOpen = ({ open }) => (
-
+const ConnectedOpen = ({ openUi }) => (
   <div className='open_menu'>
-
-    <Form open={open}/>
-        {open ? (
+    <StoreOpenMenuButtonForm openUi={openUi}/>
+        {openUi ? (
           <Paper >
             <Ui/>
           </Paper>

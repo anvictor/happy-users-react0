@@ -1,13 +1,8 @@
-import {OPEN_MENU} from '../constants/action-types';
+import {combineReducers} from 'redux';
+import OpenMenuReducers from './openMenuReducers';
 
-const initialMenuState = {open: false};
+const allReducers = combineReducers({
+  OpenMenuReducers: OpenMenuReducers,
+});
 
-function openMenuReducer(state = initialMenuState, action) {
-  const localState = {};
-  Object.assign(localState,  state);
-  if (action.type === OPEN_MENU){
-    localState.open = !localState.open;
-  }
-  return localState;
-};
-export default openMenuReducer;
+export default allReducers

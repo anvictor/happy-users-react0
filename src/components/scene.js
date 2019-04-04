@@ -1,7 +1,7 @@
 import React from 'react'
 import 'aframe'
 import 'babel-polyfill'
-import {Entity, Scene} from 'aframe-react'
+import {Entity} from 'aframe-react'
 
 function ScenePlace() {
   return(

@@ -2,54 +2,48 @@ import React, {Component} from 'react'
 import Button from './ui-childs/button'
 import NestedList from './ui-childs/li'
 import EnhancedTableHead from './ui-childs/delList'
-class Ui extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      isHidden: true
-    };
+import { connect } from "react-redux";
+import StoreAddButtonForm from "./ui-childs/storeAddButtonForm";
+import StoreDelButtonForm from "./ui-childs/storeDelButtonForm";
+const mapStateToProps = state => {
+  console.log('state',  state);
 
-    this.buttonClick = this.buttonClick.bind(this);
-  }
+  return {
+    addVisible: state.OpenMenuReducers.addVisible,
+    delVisible: state.OpenMenuReducers.delVisible,
+  };
+};
 
-  buttonClick(e) {
-    console.log('ui');
-    console.dir(e);
-  }
-  render() {
+const ConnectedForm = ({addVisible, delVisible}) =>
+   (
+    <div className="ui">
+      <StoreAddButtonForm
+        addVisible={addVisible}
+      />
+      <StoreDelButtonForm
+        delVisible={delVisible}
+      />
 
-    return (
-      <div className="ui">
-        <Button
-          actionName = 'add'
-          caption = {<p>&#9660;{" add entity"}</p>}
-          buttonClick={this.buttonClick}
-        />
-        <Button
-          actionName = 'del'
-          caption = {<p>{"( X ) delete entity"}</p>}
-          buttonClick={this.buttonClick}
-        />
-        <Button
-          actionName = 'save'
-          caption = {<p>&#9668;{" save scene"}</p>}
-          buttonClick={this.buttonClick}
-        />
-        <Button
-          actionName = 'delAll'
-          caption = {<p>{"( X . . . X ) delete all"}</p>}
-          buttonClick={this.buttonClick}
-        />
-        <Button
-          actionName = 'load'
-          caption = {<p>&#9658;{" load scene"}</p>}
-          buttonClick={this.buttonClick}
-        />
-        <NestedList/>
-        <EnhancedTableHead/>
-      </div>
+      <Button
+        actionName = 'save'
+        caption = {<p>&#9668;{" save scene"}</p>}
+        // buttonClick={this.buttonClick}
+      />
+      <Button
+        actionName = 'delAll'
+        caption = {<p>{"( X . . . X ) delete all"}</p>}
+        // buttonClick={this.buttonClick}
+      />
+      <Button
+        actionName = 'load'
+        caption = {<p>&#9658;{" load scene"}</p>}
+        // buttonClick={this.buttonClick}
+      />
+      {addVisible ? ( <NestedList/> ) : null}
+      {delVisible ? ( <EnhancedTableHead/> ) : null}
+    </div>
 
-    );
-  }
-}
-export default Ui
+  );
+
+const Ui = connect(mapStateToProps)(ConnectedForm);
+export default Ui;
